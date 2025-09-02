@@ -24,3 +24,14 @@ def hello():
 
 #if __name__ == "__main__":
 #    app.run(debug=True, host="127.0.0.1", port=5000)
+
+from sqlalchemy import create_engine, text
+import os
+
+engine = create_engine(os.getenv("DATABASE_URL"))
+
+@app.get("/api/dbtest")
+def dbtest():
+    with engine.connect() as conn:
+        result = conn.execute(text("SELECT now()")).scalar()
+        return {"time": str(result)}
