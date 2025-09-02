@@ -5,7 +5,7 @@ from flask import Flask, jsonify
 app = Flask(__name__)
 
 # 從環境變數讀取 SECRET_KEY，沒有就用 dev-secret
-SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret")
+SECRET_KEY = os.getenv("SECRET_KEY", "my-secret-09081111")
 app.config["SECRET_KEY"] = SECRET_KEY
 
 @app.route("/")
